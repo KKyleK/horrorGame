@@ -1,0 +1,88 @@
+[gd_scene load_steps=12 format=3 uid="uid://bnq5tnxremi37"]
+
+[ext_resource type="Script" path="res://Scripts/checkpoint.gd" id="1_smnsu"]
+[ext_resource type="Texture2D" uid="uid://copeflcjl3f4t" path="res://2d_sprite_animation_assets/stationary assets/flag animation.png" id="1_vbi4k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qsbup"]
+size = Vector2(43, 102)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_iuvny"]
+light_mode = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8eau"]
+atlas = ExtResource("1_vbi4k")
+region = Rect2(0, 0, 44, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1801l"]
+atlas = ExtResource("1_vbi4k")
+region = Rect2(60, 0, 44, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6hvq"]
+atlas = ExtResource("1_vbi4k")
+region = Rect2(120, 0, 44, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5yute"]
+atlas = ExtResource("1_vbi4k")
+region = Rect2(180, 0, 44, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2u5ap"]
+atlas = ExtResource("1_vbi4k")
+region = Rect2(240, 0, 44, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5ye4f"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8eau")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1801l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6hvq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5yute")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2u5ap")
+}],
+"loop": true,
+"name": &"moving",
+"speed": 5.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_t5o6u"]
+light_mode = 2
+
+[node name="Checkpoint" type="Node2D"]
+script = ExtResource("1_smnsu")
+
+[node name="Area2D" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(4.5, -59)
+shape = SubResource("RectangleShape2D_qsbup")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -1
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_iuvny")
+position = Vector2(5, -58)
+scale = Vector2(0.977273, 1.68333)
+sprite_frames = SubResource("SpriteFrames_5ye4f")
+animation = &"moving"
+frame_progress = 0.935242
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+z_as_relative = false
+material = SubResource("CanvasItemMaterial_t5o6u")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

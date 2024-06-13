@@ -1,0 +1,24 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=7 format=3 uid="uid://bg421416ke455"]
+
+[ext_resource type="AudioStream" uid="uid://drjib0x4pfc0r" path="res://Scenes/SFX/jump/667290__pekena_larva__voc_male_jump_04.wav" id="1_7s713"]
+[ext_resource type="AudioStream" uid="uid://dxlq41jkuvvgp" path="res://Scenes/SFX/jump/667291__pekena_larva__voc_male_jump_03.wav" id="2_jnrlh"]
+[ext_resource type="AudioStream" uid="uid://bbr1pqnc03lvl" path="res://Scenes/SFX/jump/667292__pekena_larva__voc_male_jump_02.wav" id="3_gsaur"]
+[ext_resource type="AudioStream" uid="uid://daiq0giqhhkt4" path="res://Scenes/SFX/jump/667293__pekena_larva__voc_male_jump_01.wav" id="4_nocjl"]
+[ext_resource type="AudioStream" uid="uid://dhfj887btda4p" path="res://Scenes/SFX/jump/667296__pekena_larva__voc_male_jump_06.wav" id="5_obbgr"]
+[ext_resource type="AudioStream" uid="uid://crdtml4ebhpd0" path="res://Scenes/SFX/jump/667297__pekena_larva__voc_male_jump_05.wav" id="6_ghgcq"]
+
+[resource]
+streams_count = 6
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("1_7s713")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_jnrlh")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_gsaur")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("4_nocjl")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("5_obbgr")
+stream_4/weight = 1.0
+stream_5/stream = ExtResource("6_ghgcq")
+stream_5/weight = 1.0

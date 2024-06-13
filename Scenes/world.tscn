@@ -1,0 +1,569 @@
+[gd_scene load_steps=19 format=3 uid="uid://k6w2wsake86p"]
+
+[ext_resource type="Script" path="res://Scenes/world.gd" id="1_078ga"]
+[ext_resource type="PackedScene" uid="uid://bow74rsvouno1" path="res://Scenes/player.tscn" id="1_k8ner"]
+[ext_resource type="AudioStream" uid="uid://7r8t0ufilcmi" path="res://Scenes/ambientcave.tres" id="4_cmqi1"]
+[ext_resource type="PackedScene" uid="uid://biu7t81sos55x" path="res://Scenes/torch.tscn" id="4_jpksd"]
+[ext_resource type="PackedScene" uid="uid://bgrwmrd0dg52o" path="res://Scenes/ghost.tscn" id="5_mh22i"]
+[ext_resource type="Script" path="res://Scenes/cavesounds.gd" id="5_svc0n"]
+[ext_resource type="PackedScene" uid="uid://5i8klghlrirt" path="res://Scenes/rope.tscn" id="6_by00a"]
+[ext_resource type="PackedScene" uid="uid://wrqk42l0u6k7" path="res://Scenes/paper.tscn" id="6_shkny"]
+[ext_resource type="PackedScene" uid="uid://imgvg5dweeng" path="res://Scenes/death.tscn" id="7_3uijv"]
+[ext_resource type="PackedScene" uid="uid://betqcw3hukpro" path="res://Scenes/paper_full.tscn" id="7_pnni4"]
+[ext_resource type="PackedScene" uid="uid://dvnqjwre6eqql" path="res://Scenes/win.tscn" id="8_bs11m"]
+[ext_resource type="AudioStream" uid="uid://dqgk6obxjd8ry" path="res://Scenes/SFX/ghostly-sigh.wav" id="9_n5syp"]
+[ext_resource type="PackedScene" uid="uid://bxdfl3j1evg18" path="res://Scenes/Level/Level 1 Test.tscn" id="10_jl041"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_23jvy"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kv8wp"]
+light_mode = 2
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pbtec"]
+light_mode = 2
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2lly7"]
+seed = 79
+frequency = 0.1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_iushg"]
+noise = SubResource("FastNoiseLite_2lly7")
+
+[node name="World" type="Node2D"]
+position = Vector2(38, 13)
+script = ExtResource("1_078ga")
+
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("1_k8ner")]
+z_index = -1
+position = Vector2(555, 635)
+scale = Vector2(2, 2)
+motion_mode = 0
+SPEED = 400
+ACCEL = 50
+FRICTION = 90.0
+jumpForce = 900
+sprintSpeed = 45.0
+stamina = 32.52
+slowDown = 200.0
+sprintDelay = 10
+
+[node name="PaperFull" parent="Player" instance=ExtResource("7_pnni4")]
+visible = false
+z_index = 2
+z_as_relative = false
+position = Vector2(-311.5, -230.5)
+scale = Vector2(0.5, 0.5)
+
+[node name="torch" parent="Player" instance=ExtResource("4_jpksd")]
+
+[node name="cavesounds" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource("4_cmqi1")
+volume_db = -5.0
+max_polyphony = 3
+panning_strength = 1.5
+bus = &"Reverb"
+script = ExtResource("5_svc0n")
+
+[node name="Death" parent="Player" instance=ExtResource("7_3uijv")]
+z_as_relative = false
+position = Vector2(-933.56, -523.62)
+
+[node name="Win" parent="Player" instance=ExtResource("8_bs11m")]
+position = Vector2(-194.45, -138.885)
+
+[node name="Paper0" parent="." groups=["papers"] instance=ExtResource("6_shkny")]
+position = Vector2(555, 650)
+
+[node name="Paper1" parent="." groups=["papers"] instance=ExtResource("6_shkny")]
+position = Vector2(555, 650)
+
+[node name="Paper2" parent="." groups=["papers"] instance=ExtResource("6_shkny")]
+position = Vector2(555, 650)
+
+[node name="Paper3" parent="." groups=["papers"] instance=ExtResource("6_shkny")]
+position = Vector2(555, 650)
+
+[node name="Paper4" parent="." groups=["papers"] instance=ExtResource("6_shkny")]
+position = Vector2(555, 650)
+
+[node name="Paper5" parent="." groups=["papers"] instance=ExtResource("6_shkny")]
+position = Vector2(555, 650)
+
+[node name="Paper6" parent="." groups=["papers"] instance=ExtResource("6_shkny")]
+position = Vector2(555, 650)
+
+[node name="Paper7" parent="." groups=["papers"] instance=ExtResource("6_shkny")]
+position = Vector2(555, 650)
+
+[node name="Paper8" parent="." groups=["papers"] instance=ExtResource("6_shkny")]
+position = Vector2(555, 650)
+
+[node name="Paper9" parent="." groups=["papers"] instance=ExtResource("6_shkny")]
+position = Vector2(3210, 2685)
+
+[node name="Rope13" parent="." instance=ExtResource("6_by00a")]
+z_as_relative = false
+texture_filter = 1
+position = Vector2(5762, 1073)
+
+[node name="Rope14" parent="." instance=ExtResource("6_by00a")]
+texture_filter = 1
+position = Vector2(5762, 1006)
+
+[node name="Rope15" parent="." instance=ExtResource("6_by00a")]
+z_as_relative = false
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_23jvy")
+position = Vector2(5762, 1138)
+
+[node name="Rope16" parent="." instance=ExtResource("6_by00a")]
+texture_filter = 1
+position = Vector2(5762, 939)
+
+[node name="Rope12" parent="." instance=ExtResource("6_by00a")]
+z_as_relative = false
+texture_filter = 1
+position = Vector2(2506, 995)
+
+[node name="Rope62" parent="." instance=ExtResource("6_by00a")]
+texture_filter = 1
+position = Vector2(2506, 928)
+
+[node name="Rope63" parent="." instance=ExtResource("6_by00a")]
+z_as_relative = false
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_23jvy")
+position = Vector2(2506, 1060)
+
+[node name="Rope64" parent="." instance=ExtResource("6_by00a")]
+texture_filter = 1
+position = Vector2(2506, 861)
+
+[node name="Rope" parent="." instance=ExtResource("6_by00a")]
+z_as_relative = false
+texture_filter = 1
+position = Vector2(2761, 649)
+
+[node name="Rope3" parent="." instance=ExtResource("6_by00a")]
+texture_filter = 1
+position = Vector2(2761, 582)
+
+[node name="Rope2" parent="." instance=ExtResource("6_by00a")]
+z_as_relative = false
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_23jvy")
+position = Vector2(2761, 714)
+
+[node name="Rope4" parent="." instance=ExtResource("6_by00a")]
+texture_filter = 1
+position = Vector2(2761, 515)
+
+[node name="ghost" parent="." instance=ExtResource("5_mh22i")]
+visible = false
+position = Vector2(2933, 441)
+
+[node name="ghostmove" type="AudioStreamPlayer2D" parent="ghost"]
+visible = false
+stream = ExtResource("9_n5syp")
+max_distance = 20000.0
+panning_strength = 1.5
+bus = &"Reverb"
+
+[node name="Level 1 Test" parent="." instance=ExtResource("10_jl041")]
+z_index = -1
+material = SubResource("CanvasItemMaterial_kv8wp")
+position = Vector2(1189, 545)
+
+[node name="Rope5" parent="." instance=ExtResource("6_by00a")]
+z_as_relative = false
+texture_filter = 1
+position = Vector2(4105, 244)
+
+[node name="Rope6" parent="." instance=ExtResource("6_by00a")]
+texture_filter = 1
+position = Vector2(4105, 175)
+
+[node name="Rope7" parent="." instance=ExtResource("6_by00a")]
+z_as_relative = false
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_23jvy")
+position = Vector2(4105, 311)
+
+[node name="Rope8" parent="." instance=ExtResource("6_by00a")]
+texture_filter = 1
+position = Vector2(4105, 108)
+
+[node name="Rope9" parent="." instance=ExtResource("6_by00a")]
+z_as_relative = false
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_23jvy")
+position = Vector2(4105, 377)
+
+[node name="Rope10" parent="." instance=ExtResource("6_by00a")]
+z_as_relative = false
+texture_filter = 1
+position = Vector2(2058, -45)
+
+[node name="Rope11" parent="." instance=ExtResource("6_by00a")]
+texture_filter = 1
+position = Vector2(2058, -112)
+
+[node name="Rope17" parent="." instance=ExtResource("6_by00a")]
+z_as_relative = false
+texture_filter = 1
+position = Vector2(7872, 1634)
+
+[node name="Rope18" parent="." instance=ExtResource("6_by00a")]
+texture_filter = 1
+position = Vector2(7872, 1567)
+
+[node name="Rope19" parent="." instance=ExtResource("6_by00a")]
+z_as_relative = false
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_23jvy")
+position = Vector2(7872, 1699)
+
+[node name="Rope20" parent="." instance=ExtResource("6_by00a")]
+texture_filter = 1
+position = Vector2(7872, 1500)
+
+[node name="Rope21" parent="." instance=ExtResource("6_by00a")]
+z_as_relative = false
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_23jvy")
+position = Vector2(7872, 1766)
+
+[node name="Rope56" parent="." instance=ExtResource("6_by00a")]
+z_as_relative = false
+texture_filter = 1
+position = Vector2(148985, 21381.2)
+scale = Vector2(18.4023, 12.707)
+
+[node name="Rope57" parent="." instance=ExtResource("6_by00a")]
+texture_filter = 1
+position = Vector2(148985, 20529.9)
+scale = Vector2(18.4023, 12.707)
+
+[node name="Rope58" parent="." instance=ExtResource("6_by00a")]
+z_as_relative = false
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_23jvy")
+position = Vector2(148985, 22207.2)
+scale = Vector2(18.4023, 12.707)
+
+[node name="Rope59" parent="." instance=ExtResource("6_by00a")]
+texture_filter = 1
+position = Vector2(148985, 19678.5)
+scale = Vector2(18.4023, 12.707)
+
+[node name="Rope60" parent="." instance=ExtResource("6_by00a")]
+z_as_relative = false
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_23jvy")
+position = Vector2(148985, 23058.6)
+scale = Vector2(18.4023, 12.707)
+
+[node name="Rope61" parent="." instance=ExtResource("6_by00a")]
+z_as_relative = false
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_23jvy")
+position = Vector2(105445, 29157.9)
+scale = Vector2(18.4023, 12.707)
+
+[node name="Rope67" parent="." instance=ExtResource("6_by00a")]
+z_as_relative = false
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_23jvy")
+position = Vector2(105445, 29157.9)
+scale = Vector2(18.4023, 12.707)
+
+[node name="Rope27" parent="." instance=ExtResource("6_by00a")]
+z_as_relative = false
+texture_filter = 1
+position = Vector2(11405, -205)
+
+[node name="Rope28" parent="." instance=ExtResource("6_by00a")]
+texture_filter = 1
+position = Vector2(11405, -272)
+
+[node name="Rope29" parent="." instance=ExtResource("6_by00a")]
+z_as_relative = false
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_23jvy")
+position = Vector2(11405, -140)
+
+[node name="Rope30" parent="." instance=ExtResource("6_by00a")]
+texture_filter = 1
+position = Vector2(11405, -339)
+
+[node name="Rope31" parent="." instance=ExtResource("6_by00a")]
+z_as_relative = false
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_23jvy")
+position = Vector2(11405, -73)
+
+[node name="Rope32" parent="." instance=ExtResource("6_by00a")]
+z_as_relative = false
+texture_filter = 1
+position = Vector2(7872, 1634)
+
+[node name="Rope33" parent="." instance=ExtResource("6_by00a")]
+texture_filter = 1
+position = Vector2(7872, 1567)
+
+[node name="Rope34" parent="." instance=ExtResource("6_by00a")]
+z_as_relative = false
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_23jvy")
+position = Vector2(7872, 1699)
+
+[node name="Rope35" parent="." instance=ExtResource("6_by00a")]
+texture_filter = 1
+position = Vector2(7872, 1500)
+
+[node name="Rope36" parent="." instance=ExtResource("6_by00a")]
+z_as_relative = false
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_23jvy")
+position = Vector2(7872, 1766)
+
+[node name="Rope37" parent="." instance=ExtResource("6_by00a")]
+z_as_relative = false
+texture_filter = 1
+position = Vector2(6298, -1203)
+
+[node name="Rope38" parent="." instance=ExtResource("6_by00a")]
+texture_filter = 1
+position = Vector2(6298, -1270)
+
+[node name="Rope39" parent="." instance=ExtResource("6_by00a")]
+z_as_relative = false
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_23jvy")
+position = Vector2(6298, -1138)
+
+[node name="Rope40" parent="." instance=ExtResource("6_by00a")]
+texture_filter = 1
+position = Vector2(6298, -1337)
+
+[node name="Rope42" parent="." instance=ExtResource("6_by00a")]
+texture_filter = 1
+position = Vector2(5597, -1873)
+
+[node name="Rope44" parent="." instance=ExtResource("6_by00a")]
+texture_filter = 1
+position = Vector2(5597, -1940)
+
+[node name="Rope41" parent="." instance=ExtResource("6_by00a")]
+z_as_relative = false
+texture_filter = 1
+position = Vector2(7643, -1600)
+
+[node name="Rope43" parent="." instance=ExtResource("6_by00a")]
+texture_filter = 1
+position = Vector2(7643, -1667)
+
+[node name="Rope45" parent="." instance=ExtResource("6_by00a")]
+z_as_relative = false
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_23jvy")
+position = Vector2(7643, -1535)
+
+[node name="Rope46" parent="." instance=ExtResource("6_by00a")]
+texture_filter = 1
+position = Vector2(7643, -1734)
+
+[node name="Rope47" parent="." instance=ExtResource("6_by00a")]
+z_as_relative = false
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_23jvy")
+position = Vector2(7643, -1468)
+
+[node name="Rope48" parent="." instance=ExtResource("6_by00a")]
+z_as_relative = false
+texture_filter = 1
+position = Vector2(6041, -847)
+
+[node name="Rope49" parent="." instance=ExtResource("6_by00a")]
+texture_filter = 1
+position = Vector2(6041, -914)
+
+[node name="Rope50" parent="." instance=ExtResource("6_by00a")]
+z_as_relative = false
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_23jvy")
+position = Vector2(6041, -782)
+
+[node name="Rope51" parent="." instance=ExtResource("6_by00a")]
+texture_filter = 1
+position = Vector2(6041, -981)
+
+[node name="Rope52" parent="." instance=ExtResource("6_by00a")]
+z_as_relative = false
+texture_filter = 1
+position = Vector2(9294, -767)
+
+[node name="Rope53" parent="." instance=ExtResource("6_by00a")]
+texture_filter = 1
+position = Vector2(9294, -834)
+
+[node name="Rope54" parent="." instance=ExtResource("6_by00a")]
+z_as_relative = false
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_23jvy")
+position = Vector2(9294, -702)
+
+[node name="Rope55" parent="." instance=ExtResource("6_by00a")]
+texture_filter = 1
+position = Vector2(9294, -901)
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0.215686, 0.215686, 0.215686, 1)
+z_index = -31
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_pbtec")
+position = Vector2(5786, 27)
+scale = Vector2(26.7539, 16.9219)
+texture = SubResource("NoiseTexture2D_iushg")
+
+[connection signal="body_entered" from="Player/torch" to="Player" method="_on_torch_body_entered"]
+[connection signal="body_entered" from="Paper0" to="Player" method="_on_paper_body_entered"]
+[connection signal="body_exited" from="Paper0" to="Player" method="_on_paper_body_exited"]
+[connection signal="body_entered" from="Paper1" to="Player" method="_on_paper_body_entered"]
+[connection signal="body_exited" from="Paper1" to="Player" method="_on_paper_body_exited"]
+[connection signal="body_entered" from="Paper2" to="Player" method="_on_paper_body_entered"]
+[connection signal="body_exited" from="Paper2" to="Player" method="_on_paper_body_exited"]
+[connection signal="body_entered" from="Paper3" to="Player" method="_on_paper_body_entered"]
+[connection signal="body_exited" from="Paper3" to="Player" method="_on_paper_body_exited"]
+[connection signal="body_entered" from="Paper4" to="Player" method="_on_paper_body_entered"]
+[connection signal="body_exited" from="Paper4" to="Player" method="_on_paper_body_exited"]
+[connection signal="body_entered" from="Paper5" to="Player" method="_on_paper_body_entered"]
+[connection signal="body_exited" from="Paper5" to="Player" method="_on_paper_body_exited"]
+[connection signal="body_entered" from="Paper6" to="Player" method="_on_paper_body_entered"]
+[connection signal="body_exited" from="Paper6" to="Player" method="_on_paper_body_exited"]
+[connection signal="body_entered" from="Paper7" to="Player" method="_on_paper_body_entered"]
+[connection signal="body_exited" from="Paper7" to="Player" method="_on_paper_body_exited"]
+[connection signal="body_entered" from="Paper8" to="Player" method="_on_paper_body_entered"]
+[connection signal="body_exited" from="Paper8" to="Player" method="_on_paper_body_exited"]
+[connection signal="body_entered" from="Paper9" to="Player" method="_on_paper_body_entered"]
+[connection signal="body_exited" from="Paper9" to="Player" method="_on_paper_body_exited"]
+[connection signal="body_entered" from="Rope13" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope13" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope14" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope14" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope15" to="Player" method="_on_rope_2_body_entered"]
+[connection signal="body_exited" from="Rope15" to="Player" method="_on_rope_2_body_exited"]
+[connection signal="body_entered" from="Rope16" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope16" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope12" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope12" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope62" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope62" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope63" to="Player" method="_on_rope_2_body_entered"]
+[connection signal="body_exited" from="Rope63" to="Player" method="_on_rope_2_body_exited"]
+[connection signal="body_entered" from="Rope64" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope64" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope3" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope3" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope2" to="Player" method="_on_rope_2_body_entered"]
+[connection signal="body_exited" from="Rope2" to="Player" method="_on_rope_2_body_exited"]
+[connection signal="body_entered" from="Rope4" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope4" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope5" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope5" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope6" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope6" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope7" to="Player" method="_on_rope_2_body_entered"]
+[connection signal="body_exited" from="Rope7" to="Player" method="_on_rope_2_body_exited"]
+[connection signal="body_entered" from="Rope8" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope8" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope9" to="Player" method="_on_rope_2_body_entered"]
+[connection signal="body_exited" from="Rope9" to="Player" method="_on_rope_2_body_exited"]
+[connection signal="body_entered" from="Rope10" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope10" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope11" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope11" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope17" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope17" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope18" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope18" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope19" to="Player" method="_on_rope_2_body_entered"]
+[connection signal="body_exited" from="Rope19" to="Player" method="_on_rope_2_body_exited"]
+[connection signal="body_entered" from="Rope20" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope20" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope21" to="Player" method="_on_rope_2_body_entered"]
+[connection signal="body_exited" from="Rope21" to="Player" method="_on_rope_2_body_exited"]
+[connection signal="body_entered" from="Rope56" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope56" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope57" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope57" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope58" to="Player" method="_on_rope_2_body_entered"]
+[connection signal="body_exited" from="Rope58" to="Player" method="_on_rope_2_body_exited"]
+[connection signal="body_entered" from="Rope59" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope59" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope60" to="Player" method="_on_rope_2_body_entered"]
+[connection signal="body_exited" from="Rope60" to="Player" method="_on_rope_2_body_exited"]
+[connection signal="body_entered" from="Rope61" to="Player" method="_on_rope_2_body_entered"]
+[connection signal="body_exited" from="Rope61" to="Player" method="_on_rope_2_body_exited"]
+[connection signal="body_entered" from="Rope67" to="Player" method="_on_rope_2_body_entered"]
+[connection signal="body_exited" from="Rope67" to="Player" method="_on_rope_2_body_exited"]
+[connection signal="body_entered" from="Rope27" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope27" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope28" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope28" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope29" to="Player" method="_on_rope_2_body_entered"]
+[connection signal="body_exited" from="Rope29" to="Player" method="_on_rope_2_body_exited"]
+[connection signal="body_entered" from="Rope30" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope30" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope31" to="Player" method="_on_rope_2_body_entered"]
+[connection signal="body_exited" from="Rope31" to="Player" method="_on_rope_2_body_exited"]
+[connection signal="body_entered" from="Rope32" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope32" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope33" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope33" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope34" to="Player" method="_on_rope_2_body_entered"]
+[connection signal="body_exited" from="Rope34" to="Player" method="_on_rope_2_body_exited"]
+[connection signal="body_entered" from="Rope35" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope35" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope36" to="Player" method="_on_rope_2_body_entered"]
+[connection signal="body_exited" from="Rope36" to="Player" method="_on_rope_2_body_exited"]
+[connection signal="body_entered" from="Rope37" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope37" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope38" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope38" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope39" to="Player" method="_on_rope_2_body_entered"]
+[connection signal="body_exited" from="Rope39" to="Player" method="_on_rope_2_body_exited"]
+[connection signal="body_entered" from="Rope40" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope40" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope42" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope42" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope44" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope44" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope41" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope41" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope43" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope43" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope45" to="Player" method="_on_rope_2_body_entered"]
+[connection signal="body_exited" from="Rope45" to="Player" method="_on_rope_2_body_exited"]
+[connection signal="body_entered" from="Rope46" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope46" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope47" to="Player" method="_on_rope_2_body_entered"]
+[connection signal="body_exited" from="Rope47" to="Player" method="_on_rope_2_body_exited"]
+[connection signal="body_entered" from="Rope48" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope48" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope49" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope49" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope50" to="Player" method="_on_rope_2_body_entered"]
+[connection signal="body_exited" from="Rope50" to="Player" method="_on_rope_2_body_exited"]
+[connection signal="body_entered" from="Rope51" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope51" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope52" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope52" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope53" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope53" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope54" to="Player" method="_on_rope_2_body_entered"]
+[connection signal="body_exited" from="Rope54" to="Player" method="_on_rope_2_body_exited"]
+[connection signal="body_entered" from="Rope55" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope55" to="Player" method="_on_rope_body_exited"]

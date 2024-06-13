@@ -1,0 +1,81 @@
+[gd_scene load_steps=12 format=3 uid="uid://betqcw3hukpro"]
+
+[ext_resource type="Texture2D" uid="uid://oxbnnfwhhypo" path="res://Textures/pages/paper0.png" id="1_iokak"]
+[ext_resource type="Texture2D" uid="uid://db74yerova1h6" path="res://Textures/pages/paper1.png" id="2_76pwe"]
+[ext_resource type="Texture2D" uid="uid://n0asu3aua6tf" path="res://Textures/pages/paper2.png" id="3_s6ntm"]
+[ext_resource type="Texture2D" uid="uid://c3vi6mg7trd3l" path="res://Textures/pages/paper3.png" id="4_x80ak"]
+[ext_resource type="Texture2D" uid="uid://cowv80njbuu8f" path="res://Textures/pages/paper4.png" id="5_7c0v3"]
+[ext_resource type="Texture2D" uid="uid://hqmxnpcgej1w" path="res://Textures/pages/paper5.png" id="6_osyrs"]
+[ext_resource type="Texture2D" uid="uid://wbe8y58y2dgl" path="res://Textures/pages/paper6.png" id="7_ugwyd"]
+[ext_resource type="Texture2D" uid="uid://bq7lt3ga7nd5" path="res://Textures/pages/paper7.png" id="8_6srp7"]
+[ext_resource type="Texture2D" uid="uid://c335dyqevn30b" path="res://Textures/pages/paper8.png" id="9_8ha7k"]
+[ext_resource type="Texture2D" uid="uid://cn0knefbo2131" path="res://Textures/pages/paper9.png" id="10_meks4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_klpo6"]
+size = Vector2(588, 670)
+
+[node name="Paper Full" type="Area2D"]
+
+[node name="paper0" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(646, 376)
+scale = Vector2(0.804688, 0.923177)
+texture = ExtResource("1_iokak")
+
+[node name="paper1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(646, 376)
+scale = Vector2(0.804688, 0.923177)
+texture = ExtResource("2_76pwe")
+
+[node name="paper2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(646, 376)
+scale = Vector2(0.804688, 0.923177)
+texture = ExtResource("3_s6ntm")
+
+[node name="paper3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(646, 376)
+scale = Vector2(0.804688, 0.923177)
+texture = ExtResource("4_x80ak")
+
+[node name="paper4" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(646, 376)
+scale = Vector2(0.804688, 0.923177)
+texture = ExtResource("5_7c0v3")
+
+[node name="paper5" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(646, 376)
+scale = Vector2(0.804688, 0.923177)
+texture = ExtResource("6_osyrs")
+
+[node name="paper6" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(646, 376)
+scale = Vector2(0.804688, 0.923177)
+texture = ExtResource("7_ugwyd")
+
+[node name="paper7" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(646, 376)
+scale = Vector2(0.804688, 0.923177)
+texture = ExtResource("8_6srp7")
+
+[node name="paper8" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(646, 376)
+scale = Vector2(0.804688, 0.923177)
+texture = ExtResource("9_8ha7k")
+
+[node name="paper9" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(646, 376)
+scale = Vector2(0.804688, 0.923177)
+texture = ExtResource("10_meks4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(634, 363)
+shape = SubResource("RectangleShape2D_klpo6")

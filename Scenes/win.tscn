@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvnqjwre6eqql"]
+
+[ext_resource type="Texture2D" uid="uid://dcng4da3evwcn" path="res://Textures/win.png" id="1_by0aj"]
+[ext_resource type="Script" path="res://Scenes/You Win!.gd" id="2_tbhts"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_npdkl"]
+
+[node name="Win" type="Area2D"]
+
+[node name="You Win!" type="TextureButton" parent="."]
+material = SubResource("CanvasItemMaterial_npdkl")
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("1_by0aj")
+script = ExtResource("2_tbhts")

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://imgvg5dweeng"]
+
+[ext_resource type="Texture2D" uid="uid://3qcrcw3su36q" path="res://Textures/death.png" id="1_bx300"]
+[ext_resource type="Script" path="res://Scenes/You died.gd" id="1_x0lqr"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jqkca"]
+light_mode = 2
+
+[node name="Death" type="Area2D"]
+
+[node name="You died" type="TextureButton" parent="."]
+material = SubResource("CanvasItemMaterial_jqkca")
+offset_left = 736.0
+offset_top = 424.0
+offset_right = 1164.0
+offset_bottom = 544.0
+texture_normal = ExtResource("1_bx300")
+script = ExtResource("1_x0lqr")

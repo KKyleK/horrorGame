@@ -1,0 +1,124 @@
+[gd_scene load_steps=15 format=3 uid="uid://uwotp3wo4li5"]
+
+[ext_resource type="Texture2D" uid="uid://qsq8jaelcjmd" path="res://Textures/MenuButtons/png/Buttons/Rect/PlayText/exit.png" id="1_e3sm7"]
+[ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_fo7hd"]
+[ext_resource type="Script" path="res://Exit.gd" id="2_10dq4"]
+[ext_resource type="Texture2D" uid="uid://lplmuytkdyko" path="res://Textures/MenuButtons/png/Buttons/Rect/PlayText/Play.png" id="3_wanhr"]
+[ext_resource type="Script" path="res://Play.gd" id="4_xww0p"]
+[ext_resource type="Script" path="res://Scenes/Light.gd" id="5_cclfm"]
+[ext_resource type="Texture2D" uid="uid://beimtn1r78yr5" path="res://Textures/HAUNTED.png" id="5_eavgo"]
+[ext_resource type="AudioStream" uid="uid://0627vcc1hb5o" path="res://Music/No Eyes.mp3" id="8_ai38q"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_d8t1r"]
+light_mode = 2
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dml4p"]
+seed = 189
+frequency = 0.0001
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_53utr"]
+noise = SubResource("FastNoiseLite_dml4p")
+
+[sub_resource type="Gradient" id="Gradient_hvbkj"]
+offsets = PackedFloat32Array(0, 0.0129032, 0.858065)
+colors = PackedColorArray(0.948387, 0.948387, 0.948387, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_p161f"]
+gradient = SubResource("Gradient_hvbkj")
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.93578, 0.93578)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1m88d"]
+light_mode = 2
+
+[node name="MainMenu" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 80
+script = ExtResource("1_fo7hd")
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0.215686, 0.215686, 0.215686, 1)
+z_index = -10
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_d8t1r")
+position = Vector2(970, 552)
+scale = Vector2(3.83398, 2.17578)
+texture = SubResource("NoiseTexture2D_53utr")
+
+[node name="Light" type="PointLight2D" parent="."]
+position = Vector2(925, 543)
+scale = Vector2(18.93, 15)
+blend_mode = 2
+range_z_min = -15
+range_z_max = -5
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_p161f")
+script = ExtResource("5_cclfm")
+
+[node name="Area2D5" type="Area2D" parent="."]
+z_as_relative = false
+
+[node name="Title" type="TextureButton" parent="Area2D5"]
+z_index = -10
+z_as_relative = false
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_1m88d")
+offset_left = -88.0
+offset_top = -192.0
+offset_right = 1832.0
+offset_bottom = 888.0
+action_mode = 0
+texture_normal = ExtResource("5_eavgo")
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D3" type="Area2D" parent="."]
+z_as_relative = false
+
+[node name="Exit" type="TextureButton" parent="Area2D3"]
+z_index = -9
+z_as_relative = false
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_1m88d")
+offset_left = 983.0
+offset_top = 508.0
+offset_right = 1143.0
+offset_bottom = 593.0
+action_mode = 0
+texture_normal = ExtResource("1_e3sm7")
+script = ExtResource("2_10dq4")
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D4" type="Area2D" parent="."]
+z_as_relative = false
+
+[node name="Play" type="TextureButton" parent="Area2D4"]
+z_index = -9
+z_as_relative = false
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_1m88d")
+offset_left = 678.0
+offset_top = 504.0
+offset_right = 838.0
+offset_bottom = 589.0
+action_mode = 0
+texture_normal = ExtResource("3_wanhr")
+script = ExtResource("4_xww0p")
+metadata/_edit_use_anchors_ = true
+
+[node name="IntroMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_ai38q")
+volume_db = -5.0
+autoplay = true

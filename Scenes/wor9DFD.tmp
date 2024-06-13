@@ -1,0 +1,133 @@
+[gd_scene load_steps=16 format=3 uid="uid://k6w2wsake86p"]
+
+[ext_resource type="PackedScene" uid="uid://bow74rsvouno1" path="res://Scenes/player.tscn" id="1_k8ner"]
+[ext_resource type="AudioStream" path="res://Scenes/ambientcave.tres" id="4_cmqi1"]
+[ext_resource type="PackedScene" path="res://Scenes/torch.tscn" id="4_jpksd"]
+[ext_resource type="PackedScene" uid="uid://bgrwmrd0dg52o" path="res://Scenes/ghost.tscn" id="5_mh22i"]
+[ext_resource type="Script" path="res://Scenes/cavesounds.gd" id="5_svc0n"]
+[ext_resource type="PackedScene" uid="uid://5i8klghlrirt" path="res://Scenes/rope.tscn" id="6_by00a"]
+[ext_resource type="PackedScene" uid="uid://wrqk42l0u6k7" path="res://Scenes/paper.tscn" id="6_shkny"]
+[ext_resource type="PackedScene" uid="uid://betqcw3hukpro" path="res://Scenes/paper_full.tscn" id="7_pnni4"]
+[ext_resource type="AudioStream" uid="uid://dqgk6obxjd8ry" path="res://Scenes/SFX/ghostly-sigh.wav" id="9_n5syp"]
+[ext_resource type="PackedScene" uid="uid://bxdfl3j1evg18" path="res://Scenes/Level/Level 1 Test.tscn" id="10_jl041"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_23jvy"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kv8wp"]
+light_mode = 2
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pbtec"]
+light_mode = 2
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dml4p"]
+seed = 79
+frequency = 0.1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_iushg"]
+noise = SubResource("FastNoiseLite_dml4p")
+
+[node name="World" type="Node2D"]
+position = Vector2(38, 13)
+
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("1_k8ner")]
+z_index = -1
+position = Vector2(555, 635)
+scale = Vector2(2, 2)
+motion_mode = 0
+SPEED = 400.0
+ACCEL = 30.0
+FRICTION = 90.0
+jumpForce = 1000.0
+sprintSpeed = 35.0
+stamina = 3.465
+slowDown = 200.0
+gravity = null
+sprintDelay = 10
+
+[node name="PaperFull" parent="Player" instance=ExtResource("7_pnni4")]
+visible = false
+z_index = 2
+z_as_relative = false
+position = Vector2(-311.5, -230.5)
+scale = Vector2(0.5, 0.5)
+
+[node name="torch" parent="Player" instance=ExtResource("4_jpksd")]
+
+[node name="cavesounds" type="AudioStreamPlayer2D" parent="Player"]
+visible = false
+stream = ExtResource("4_cmqi1")
+volume_db = -5.0
+max_polyphony = 3
+panning_strength = 1.5
+bus = &"Reverb"
+script = ExtResource("5_svc0n")
+
+[node name="Paper" parent="." instance=ExtResource("6_shkny")]
+position = Vector2(1795, 688)
+
+[node name="Rope" parent="." instance=ExtResource("6_by00a")]
+z_index = -21
+z_as_relative = false
+texture_filter = 1
+position = Vector2(4062, 305)
+
+[node name="Rope3" parent="." instance=ExtResource("6_by00a")]
+texture_filter = 1
+position = Vector2(4061, 239)
+
+[node name="Rope2" parent="." instance=ExtResource("6_by00a")]
+z_index = -21
+z_as_relative = false
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_23jvy")
+position = Vector2(4062, 367)
+
+[node name="ghost" parent="." instance=ExtResource("5_mh22i")]
+position = Vector2(2933, 441)
+
+[node name="ghostmove" type="AudioStreamPlayer2D" parent="ghost"]
+visible = false
+stream = ExtResource("9_n5syp")
+panning_strength = 1.5
+bus = &"Reverb"
+
+[node name="Level 1 Test" parent="." instance=ExtResource("10_jl041")]
+z_index = -1
+material = SubResource("CanvasItemMaterial_kv8wp")
+position = Vector2(1189, 545)
+
+[node name="Rope4" parent="." instance=ExtResource("6_by00a")]
+position = Vector2(4059, 168)
+
+[node name="Rope5" parent="." instance=ExtResource("6_by00a")]
+position = Vector2(2763, 642)
+
+[node name="Rope6" parent="." instance=ExtResource("6_by00a")]
+position = Vector2(2763, 712)
+
+[node name="Rope7" parent="." instance=ExtResource("6_by00a")]
+position = Vector2(2763, 501)
+
+[node name="Rope7" parent="Rope7" instance=ExtResource("6_by00a")]
+position = Vector2(4059, 91)
+
+[node name="Rope8" parent="." instance=ExtResource("6_by00a")]
+position = Vector2(2763, 570)
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0.215686, 0.215686, 0.215686, 1)
+z_index = -31
+material = SubResource("CanvasItemMaterial_pbtec")
+position = Vector2(4122, 618)
+scale = Vector2(18.4023, 12.707)
+texture = SubResource("NoiseTexture2D_iushg")
+
+[connection signal="body_entered" from="Player/torch" to="Player" method="_on_torch_body_entered"]
+[connection signal="body_entered" from="Paper" to="Player" method="_on_paper_body_entered"]
+[connection signal="body_exited" from="Paper" to="Player" method="_on_paper_body_exited"]
+[connection signal="body_entered" from="Rope" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope3" to="Player" method="_on_rope_body_entered"]
+[connection signal="body_exited" from="Rope3" to="Player" method="_on_rope_body_exited"]
+[connection signal="body_entered" from="Rope2" to="Player" method="_on_rope_2_body_entered"]
+[connection signal="body_exited" from="Rope2" to="Player" method="_on_rope_2_body_exited"]
